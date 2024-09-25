@@ -1,0 +1,38 @@
+using System;
+using System.Collections;
+
+class Program
+{
+    static void Main()
+    {
+        Hashtable people = new Hashtable();
+
+        Console.WriteLine("Nhap ten va tuoi (Nhap 'x' de dung):");
+        while (true)
+        {
+            Console.Write("Ten: ");
+            string name = Console.ReadLine();
+            if (name.ToLower() == "x")
+                break;
+
+            Console.Write("Tuoi: ");
+            string ageInput = Console.ReadLine();
+            int age;
+            if (int.TryParse(ageInput, out age))
+            {
+                people[name] = age; // Luu cap ten va tuoi vao Hashtable
+            }
+            else
+            {
+                Console.WriteLine("Vui long nhap mot tuoi hop le.");
+            }
+        }
+
+        // In ra danh sach cac cap ten va tuoi
+        Console.WriteLine("Danh sach ten va tuoi da nhap:");
+        foreach (DictionaryEntry entry in people)
+        {
+            Console.WriteLine($"{entry.Key}, {entry.Value} tuoi");
+        }
+    }
+}
