@@ -1,0 +1,38 @@
+using System;
+using System.Collections.Generic;
+
+class Program
+{
+    static void Main()
+    {
+        Dictionary<string, int> students = new Dictionary<string, int>();
+
+        Console.WriteLine("Nhap ten hoc sinh va diem (Nhap 'x' de dung):");
+        while (true)
+        {
+            Console.Write("Ten hoc sinh: ");
+            string name = Console.ReadLine();
+            if (name.ToLower() == "x")
+                break;
+
+            Console.Write("Diem: ");
+            string scoreInput = Console.ReadLine();
+            int score;
+            if (int.TryParse(scoreInput, out score))
+            {
+                students[name] = score; // Luu cap ten va diem vao Dictionary
+            }
+            else
+            {
+                Console.WriteLine("Vui long nhap mot diem hop le.");
+            }
+        }
+
+        // In ra danh sach hoc sinh va diem
+        Console.WriteLine("Danh sach hoc sinh va diem:");
+        foreach (KeyValuePair<string, int> student in students)
+        {
+            Console.WriteLine($"{student.Key}, {student.Value} diem");
+        }
+    }
+}
